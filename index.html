@@ -1,0 +1,357 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2685.3">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; -webkit-text-stroke: #000000}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; -webkit-text-stroke: #000000; min-height: 14.0px}
+    span.s1 {font-kerning: none}
+  </style>
+</head>
+<body>
+<p class="p1"><span class="s1">&lt;!DOCTYPE html&gt;</span></p>
+<p class="p1"><span class="s1">&lt;html lang="en"&gt;</span></p>
+<p class="p1"><span class="s1">&lt;head&gt;</span></p>
+<p class="p1"><span class="s1">&lt;meta charset="UTF-8"&gt;</span></p>
+<p class="p1"><span class="s1">&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</span></p>
+<p class="p1"><span class="s1">&lt;title&gt;0x01&lt;/title&gt;</span></p>
+<p class="p1"><span class="s1">&lt;script src="https://cdn.jsdelivr.net/npm/chart.js"&gt;&lt;/script&gt;</span></p>
+<p class="p1"><span class="s1">&lt;style&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>body {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>margin: 0;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>padding: 0;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>background-color: #050505;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>color: #d3d3d3;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>font-family: monospace;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>overflow: hidden;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>user-select: none;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>#screen-init, #screen-result {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>position: absolute;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>width: 100vw;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>height: 100vh;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>display: flex;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>flex-direction: column;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>align-items: center;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>justify-content: center;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>z-index: 10;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>#screen-result {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>display: none;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>background-color: #020202;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>padding: 40px;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>box-sizing: border-box;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>.chart-container {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>position: relative;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>width: 80vw;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>height: 60vh;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>border: 1px solid #1a1a1a;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>input {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>background: #000;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>border: 1px solid #333;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>color: #fff;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>padding: 12px;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>font-family: monospace;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>text-align: center;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>outline: none;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>width: 200px;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>letter-spacing: 1px;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>input:focus {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>border-color: #666;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>button {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>margin-top: 2px;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>background: #111;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>border: 1px solid #333;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>color: #888;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>padding: 12px;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>width: 226px;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>cursor: pointer;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>font-family: monospace;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>transition: color 0.2s, border-color 0.2s;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>button:hover {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>color: #fff;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>border-color: #666;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>#screen-task {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>position: absolute;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>width: 100vw;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>height: 100vh;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>display: none;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>z-index: 5;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>canvas {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>display: block;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>.status-log {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>margin-top: 20px;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>color: #555;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>font-size: 12px;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>letter-spacing: 0.5px;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
+<p class="p1"><span class="s1">&lt;/style&gt;</span></p>
+<p class="p1"><span class="s1">&lt;/head&gt;</span></p>
+<p class="p1"><span class="s1">&lt;body&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">&lt;div id="screen-init"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;input type="text" id="p-id" placeholder="ID_"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;button id="btn-exec"&gt;EXECUTE&lt;/button&gt;</span></p>
+<p class="p1"><span class="s1">&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">&lt;div id="screen-task"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;canvas id="canvas-core"&gt;&lt;/canvas&gt;</span></p>
+<p class="p1"><span class="s1">&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">&lt;div id="screen-result"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;div class="chart-container"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;canvas id="chart-core"&gt;&lt;/canvas&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;div id="status-text" class="status-log"&gt;AWAITING_AGGREGATION...&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1">&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">&lt;script&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>const CONFIG = {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>ENDPOINT: 'YOUR_WEB_APP_URL', // 必须替换为有效URL</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>TRIALS: 10,</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>RADIUS: 50,</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>DELAY_MS: 500,</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>BIN_WIDTH: 30 // 分箱精度 (ms)</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>};</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>let state = {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>id: null,</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>trial: 0,</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>t0: 0,</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>x: -1,</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>y: -1,</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>payloads: []</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>};</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>const dom = {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>init: document.getElementById('screen-init'),</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>task: document.getElementById('screen-task'),</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>result: document.getElementById('screen-result'),</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>input: document.getElementById('p-id'),</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>btn: document.getElementById('btn-exec'),</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>cvs: document.getElementById('canvas-core'),</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>chart: document.getElementById('chart-core'),</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>status: document.getElementById('status-text')</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>};</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>const ctx = dom.cvs.getContext('2d');</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>const syncViewport = () =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>dom.cvs.width = window.innerWidth;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>dom.cvs.height = window.innerHeight;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>};</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>window.addEventListener('resize', syncViewport);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>syncViewport();</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>dom.btn.addEventListener('click', () =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const rawId = dom.input.value.trim();</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>state.id = rawId || Math.random().toString(36).substring(2, 10).toUpperCase();</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>dom.init.style.display = 'none';</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>dom.task.style.display = 'block';</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>setTimeout(cycle, CONFIG.DELAY_MS);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>});</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>const cycle = () =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>if (state.trial &gt;= CONFIG.TRIALS) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>terminate();</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>return;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>state.trial++;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const w = dom.cvs.width;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const h = dom.cvs.height;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const r = CONFIG.RADIUS;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>state.x = r + Math.random() * (w - r * 2);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>state.y = r + Math.random() * (h - r * 2);</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>ctx.clearRect(0, 0, w, h);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>ctx.fillStyle = '#fff';</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>ctx.beginPath();</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>ctx.arc(state.x, state.y, r, 0, Math.PI * 2);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>ctx.fill();</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>state.t0 = performance.now();</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>};</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>dom.cvs.addEventListener('mousedown', (e) =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>if (state.trial === 0 || state.trial &gt; CONFIG.TRIALS) return;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const dx = e.clientX - state.x;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const dy = e.clientY - state.y;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const dist = Math.sqrt(dx * dx + dy * dy);</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>if (dist &lt;= CONFIG.RADIUS) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const rt = performance.now() - state.t0;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>state.payloads.push({</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>Participant_ID: state.id,</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>Trial_Number: state.trial,</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>Reaction_Time: parseFloat(rt.toFixed(2))</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>});</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>ctx.clearRect(0, 0, dom.cvs.width, dom.cvs.height);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>state.x = -1;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>state.y = -1;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>setTimeout(cycle, CONFIG.DELAY_MS);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>});</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>const terminate = async () =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>dom.task.style.display = 'none';</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>dom.result.style.display = 'flex';</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const rtSum = state.payloads.reduce((acc, curr) =&gt; acc + curr.Reaction_Time, 0);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const userAvg = rtSum / CONFIG.TRIALS;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>// 异步写入协议</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>state.payloads.forEach(data =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>fetch(CONFIG.ENDPOINT, {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>method: 'POST',</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>mode: 'no-cors',</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>headers: { 'Content-Type': 'text/plain' },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>body: JSON.stringify(data)</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>}).catch(() =&gt; {});</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>});</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>// 提取历史向量</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>try {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>dom.status.innerText = 'FETCHING_HISTORICAL_DISTRIBUTION...';</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const response = await fetch(CONFIG.ENDPOINT);</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>if (!response.ok) throw new Error('NETWORK_ERR');</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const rawData = await response.json();</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const validHistory = rawData</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>.map(Number)</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>.filter(n =&gt; !isNaN(n) &amp;&amp; n &gt; 50 &amp;&amp; n &lt; 5000);<span class="Apple-converted-space"> </span></span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>// 将当前个体的均值作为张量引入</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>validHistory.push(userAvg);</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>dom.status.innerText = `SYS_SYNC | N=${validHistory.length} | ID:${state.id}`;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>renderHistogram(validHistory, userAvg);</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>} catch (err) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>dom.status.innerText = 'ERR_READ_PHASE: ' + err.message;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>dom.status.style.color = '#500';</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>// 降级渲染（仅含当前样本）</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>renderHistogram([userAvg], userAvg);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>};</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>const renderHistogram = (data, thresholdX) =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const w = CONFIG.BIN_WIDTH;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const min = Math.floor(Math.min(...data) / w) * w;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const max = Math.ceil(Math.max(...data) / w) * w;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const labels = [];</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const bins = [];</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>for (let i = min; i &lt;= max; i += w) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>labels.push(i);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>bins.push(0);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>data.forEach(val =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const index = Math.floor((val - min) / w);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>if (index &gt;= 0 &amp;&amp; index &lt; bins.length) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>bins[index]++;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>} else if (index === bins.length) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>bins[index - 1]++;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>});</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const ctxChart = dom.chart.getContext('2d');</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>new Chart(ctxChart, {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>type: 'bar',</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>data: {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>labels: labels,</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>datasets: [{</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>label: 'Δ Frequency',</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>data: bins,</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>backgroundColor: '#111',</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>borderColor: '#222',</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>borderWidth: 1,</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>barPercentage: 1.0,</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>categoryPercentage: 1.0</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>}]</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>},</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>options: {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>responsive: true,</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>maintainAspectRatio: false,</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>animation: { duration: 800, easing: 'easeOutQuart' },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>scales: {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>x: {<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>grid: { color: '#0a0a0a' },<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>ticks: { color: '#444', maxTicksLimit: 20 }<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>},</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>y: {<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>grid: { color: '#0a0a0a' },<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>ticks: { color: '#444', stepSize: 1 },<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>beginAtZero: true<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>},</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>plugins: {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>legend: { display: false },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>tooltip: { enabled: false }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>},</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>plugins: [{</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>id: 'structuralTensionLine',</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>afterDatasetsDraw: (chart) =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>const { ctx, chartArea: { top, bottom }, scales: { x } } = chart;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                    </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>// 悬停/错位：线性插值映射离散轴</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>const relativeOffset = (thresholdX - min) / w;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                    </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>let targetPx;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>if (relativeOffset &lt;= 0) targetPx = x.getPixelForTick(0);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>else if (relativeOffset &gt;= labels.length - 1) targetPx = x.getPixelForTick(labels.length - 1);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>else {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>const idx = Math.floor(relativeOffset);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>const remainder = relativeOffset - idx;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>const p1 = x.getPixelForTick(idx);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>const p2 = x.getPixelForTick(idx + 1);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>targetPx = p1 + (p2 - p1) * remainder;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>ctx.save();</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>ctx.beginPath();</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>ctx.moveTo(targetPx, top);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>ctx.lineTo(targetPx, bottom);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>ctx.lineWidth = 1;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>ctx.strokeStyle = '#888';</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>ctx.setLineDash([4, 4]);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>ctx.stroke();</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                    </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>ctx.fillStyle = '#aaa';</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>ctx.font = '11px monospace';</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>ctx.fillText(`μ=${thresholdX.toFixed(1)}`, targetPx + 6, top + 12);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>ctx.restore();</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>}]</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>});</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>};</span></p>
+<p class="p1"><span class="s1">&lt;/script&gt;</span></p>
+<p class="p1"><span class="s1">&lt;/body&gt;</span></p>
+<p class="p1"><span class="s1">&lt;/html&gt;</span></p>
+</body>
+</html>
