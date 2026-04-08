@@ -104,7 +104,7 @@
 <br>
 <script>
     const CONFIG = {
-        ENDPOINT: 'https://script.google.com/macros/s/AKfycbwzJ-sPZZZoRZGgw7D94G1s9nE6V6mJ_GI_CgKCQADy7aa6Ki2eWlSDpjKCVLPBRW6Q/exec', // REPLACE WITH YOUR ACTUAL URL
+        ENDPOINT: 'https://script.google.com/macros/s/AKfycbxIO5-FJLQ5KFUcmmRZIaBfBPJF0vhMg8-lnUMzHMAE65TzebxfKvTkdVlk6Xu6QkDe/exec', // REPLACE WITH YOUR ACTUAL URL
         TRIALS: 10,
         RADIUS: 50,
         DELAY_MS: 500,
@@ -205,15 +205,13 @@
         const rtSum = state.payloads.reduce((acc, curr) => acc + curr.Reaction_Time, 0);
         const userAvg = rtSum / CONFIG.TRIALS;
 
-        // async write protocol
-        state.payloads.forEach(data => {
-            fetch(CONFIG.ENDPOINT, {
-                method: 'POST',
-                mode: 'no-cors',
-                headers: { 'Content-Type': 'text/plain' },
-                body: JSON.stringify(data)
-            }).catch(() => {});
-        });
+        // write protocol
+        etch(CONFIG.ENDPOINT, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'text/plain' },
+            body: JSON.stringify(state.payloads)
+        }).catch(() => {});
 
         // extract historical vector
         try {
