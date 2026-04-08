@@ -206,7 +206,7 @@
         const userAvg = rtSum / CONFIG.TRIALS;
 
         // write protocol
-        etch(CONFIG.ENDPOINT, {
+        fetch(CONFIG.ENDPOINT, {
             method: 'POST',
             mode: 'no-cors',
             headers: { 'Content-Type': 'text/plain' },
